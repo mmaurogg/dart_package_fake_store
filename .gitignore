@@ -1,0 +1,21 @@
+# Archivos de Dart/Flutter
+.dart_tool/
+.packages
+.pub/
+build/
+
+# VS Code
+.vscode/
+.history/
+
+# SO
+.DS_Store
+Thumbs.db
+
+# Archivos de logs o temporales
+*.log
+*.tmp
+*.swp
+
+# Archivos de cobertura de pruebas
+coverage/
