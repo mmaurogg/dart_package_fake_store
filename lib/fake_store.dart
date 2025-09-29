@@ -1,8 +1,8 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
 library;
 
-export 'src/fake_store_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/api/auth_api_source.dart';
+export 'src/api/cart_api_source.dart';
+export 'src/api/product_api_source.dart';
+export 'src/exceptions/api_exceptions.dart';
+export 'src/models/cart.dart';
+export 'src/models/product.dart';
