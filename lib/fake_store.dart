@@ -15,6 +15,8 @@ import 'package:fake_store/src/repository/product_repository.dart';
 import 'package:fake_store/src/repository/user_repository.dart';
 
 class FakeStore {
+  static final FakeStore instance = FakeStore._internal();
+
   final Dio? _client;
 
   late final AuthRepository auth;
@@ -22,10 +24,21 @@ class FakeStore {
   late final ProductRepository product;
   late final UserRepository user;
 
-  FakeStore({Dio? client}) : _client = client ?? Dio() {
-    auth = AuthApiSource(client: _client);
-    cart = CartApiSource(client: _client);
-    product = ProductApiSource(client: _client);
-    user = UserApiSource(client: _client);
+  factory FakeStore({Dio? client}) {
+    if (client != null) {
+      instance._init(client);
+    }
+    return instance;
+  }
+
+  FakeStore._internal() : _client = Dio() {
+    _init(_client!);
+  }
+
+  void _init(Dio client) {
+    auth = AuthApiSource(client: client);
+    cart = CartApiSource(client: client);
+    product = ProductApiSource(client: client);
+    user = UserApiSource(client: client);
   }
 }
