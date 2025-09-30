@@ -15,15 +15,13 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Cart {
 
- int? get id; int? get userId; DateTime? get date; List<CartProduct>? get products;
+ int? get id; set id(int? value); int? get userId; set userId(int? value); DateTime? get date; set date(DateTime? value); List<CartProduct>? get products; set products(List<CartProduct>? value);
 /// Create a copy of Cart
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $CartCopyWith<Cart> get copyWith => _$CartCopyWithImpl<Cart>(this as Cart, _$identity);
 
-  /// Serializes this Cart to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -66,7 +64,7 @@ class _$CartCopyWithImpl<$Res>
 /// Create a copy of Cart
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? userId = freezed,Object? date = freezed,Object? products = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(Cart(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,userId: freezed == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as int?,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
@@ -92,11 +90,10 @@ extension CartPatterns on Cart {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Cart value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Cart() when $default != null:
-return $default(_that);case _:
+case _:
   return orElse();
 
 }
@@ -114,11 +111,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Cart value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(){
 final _that = this;
 switch (_that) {
-case _Cart():
-return $default(_that);case _:
+case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -135,11 +131,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Cart value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(){
 final _that = this;
 switch (_that) {
-case _Cart() when $default != null:
-return $default(_that);case _:
+case _:
   return null;
 
 }
@@ -156,10 +151,9 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  int? userId,  DateTime? date,  List<CartProduct>? products)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Cart() when $default != null:
-return $default(_that.id,_that.userId,_that.date,_that.products);case _:
+case _:
   return orElse();
 
 }
@@ -177,10 +171,9 @@ return $default(_that.id,_that.userId,_that.date,_that.products);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  int? userId,  DateTime? date,  List<CartProduct>? products)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>() {final _that = this;
 switch (_that) {
-case _Cart():
-return $default(_that.id,_that.userId,_that.date,_that.products);case _:
+case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +190,9 @@ return $default(_that.id,_that.userId,_that.date,_that.products);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  int? userId,  DateTime? date,  List<CartProduct>? products)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>() {final _that = this;
 switch (_that) {
-case _Cart() when $default != null:
-return $default(_that.id,_that.userId,_that.date,_that.products);case _:
+case _:
   return null;
 
 }
@@ -208,102 +200,17 @@ return $default(_that.id,_that.userId,_that.date,_that.products);case _:
 
 }
 
-/// @nodoc
-@JsonSerializable()
-
-class _Cart implements Cart {
-  const _Cart({this.id, this.userId, this.date, final  List<CartProduct>? products}): _products = products;
-  factory _Cart.fromJson(Map<String, dynamic> json) => _$CartFromJson(json);
-
-@override final  int? id;
-@override final  int? userId;
-@override final  DateTime? date;
- final  List<CartProduct>? _products;
-@override List<CartProduct>? get products {
-  final value = _products;
-  if (value == null) return null;
-  if (_products is EqualUnmodifiableListView) return _products;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(value);
-}
-
-
-/// Create a copy of Cart
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$CartCopyWith<_Cart> get copyWith => __$CartCopyWithImpl<_Cart>(this, _$identity);
-
-@override
-Map<String, dynamic> toJson() {
-  return _$CartToJson(this, );
-}
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Cart&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.date, date) || other.date == date)&&const DeepCollectionEquality().equals(other._products, _products));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,id,userId,date,const DeepCollectionEquality().hash(_products));
-
-@override
-String toString() {
-  return 'Cart(id: $id, userId: $userId, date: $date, products: $products)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$CartCopyWith<$Res> implements $CartCopyWith<$Res> {
-  factory _$CartCopyWith(_Cart value, $Res Function(_Cart) _then) = __$CartCopyWithImpl;
-@override @useResult
-$Res call({
- int? id, int? userId, DateTime? date, List<CartProduct>? products
-});
-
-
-
-
-}
-/// @nodoc
-class __$CartCopyWithImpl<$Res>
-    implements _$CartCopyWith<$Res> {
-  __$CartCopyWithImpl(this._self, this._then);
-
-  final _Cart _self;
-  final $Res Function(_Cart) _then;
-
-/// Create a copy of Cart
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? userId = freezed,Object? date = freezed,Object? products = freezed,}) {
-  return _then(_Cart(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,userId: freezed == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
-as int?,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as DateTime?,products: freezed == products ? _self._products : products // ignore: cast_nullable_to_non_nullable
-as List<CartProduct>?,
-  ));
-}
-
-
-}
-
 
 /// @nodoc
 mixin _$CartProduct {
 
- int? get id; int? get productId; int? get quantity;
+ int? get id; set id(int? value); int? get productId; set productId(int? value); int? get quantity; set quantity(int? value);
 /// Create a copy of CartProduct
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $CartProductCopyWith<CartProduct> get copyWith => _$CartProductCopyWithImpl<CartProduct>(this as CartProduct, _$identity);
 
-  /// Serializes this CartProduct to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -346,7 +253,7 @@ class _$CartProductCopyWithImpl<$Res>
 /// Create a copy of CartProduct
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? productId = freezed,Object? quantity = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CartProduct(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,productId: freezed == productId ? _self.productId : productId // ignore: cast_nullable_to_non_nullable
 as int?,quantity: freezed == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
@@ -371,11 +278,10 @@ extension CartProductPatterns on CartProduct {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CartProduct value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _CartProduct() when $default != null:
-return $default(_that);case _:
+case _:
   return orElse();
 
 }
@@ -393,11 +299,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CartProduct value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(){
 final _that = this;
 switch (_that) {
-case _CartProduct():
-return $default(_that);case _:
+case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -414,11 +319,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CartProduct value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(){
 final _that = this;
 switch (_that) {
-case _CartProduct() when $default != null:
-return $default(_that);case _:
+case _:
   return null;
 
 }
@@ -435,10 +339,9 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  int? productId,  int? quantity)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _CartProduct() when $default != null:
-return $default(_that.id,_that.productId,_that.quantity);case _:
+case _:
   return orElse();
 
 }
@@ -456,10 +359,9 @@ return $default(_that.id,_that.productId,_that.quantity);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  int? productId,  int? quantity)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>() {final _that = this;
 switch (_that) {
-case _CartProduct():
-return $default(_that.id,_that.productId,_that.quantity);case _:
+case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -476,87 +378,13 @@ return $default(_that.id,_that.productId,_that.quantity);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  int? productId,  int? quantity)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>() {final _that = this;
 switch (_that) {
-case _CartProduct() when $default != null:
-return $default(_that.id,_that.productId,_that.quantity);case _:
+case _:
   return null;
 
 }
 }
-
-}
-
-/// @nodoc
-@JsonSerializable()
-
-class _CartProduct implements CartProduct {
-  const _CartProduct({this.id, this.productId, this.quantity});
-  factory _CartProduct.fromJson(Map<String, dynamic> json) => _$CartProductFromJson(json);
-
-@override final  int? id;
-@override final  int? productId;
-@override final  int? quantity;
-
-/// Create a copy of CartProduct
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$CartProductCopyWith<_CartProduct> get copyWith => __$CartProductCopyWithImpl<_CartProduct>(this, _$identity);
-
-@override
-Map<String, dynamic> toJson() {
-  return _$CartProductToJson(this, );
-}
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartProduct&&(identical(other.id, id) || other.id == id)&&(identical(other.productId, productId) || other.productId == productId)&&(identical(other.quantity, quantity) || other.quantity == quantity));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,id,productId,quantity);
-
-@override
-String toString() {
-  return 'CartProduct(id: $id, productId: $productId, quantity: $quantity)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$CartProductCopyWith<$Res> implements $CartProductCopyWith<$Res> {
-  factory _$CartProductCopyWith(_CartProduct value, $Res Function(_CartProduct) _then) = __$CartProductCopyWithImpl;
-@override @useResult
-$Res call({
- int? id, int? productId, int? quantity
-});
-
-
-
-
-}
-/// @nodoc
-class __$CartProductCopyWithImpl<$Res>
-    implements _$CartProductCopyWith<$Res> {
-  __$CartProductCopyWithImpl(this._self, this._then);
-
-  final _CartProduct _self;
-  final $Res Function(_CartProduct) _then;
-
-/// Create a copy of CartProduct
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? productId = freezed,Object? quantity = freezed,}) {
-  return _then(_CartProduct(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,productId: freezed == productId ? _self.productId : productId // ignore: cast_nullable_to_non_nullable
-as int?,quantity: freezed == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
-as int?,
-  ));
-}
-
 
 }
 

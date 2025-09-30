@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart' show Either;
-import 'package:fake_store/src/models/product.dart';
+import 'package:fake_store/fake_store.dart';
 
 abstract class ProductRepository {
-  Future<Either<Exception, List<Product?>>> getProducts();
-  Future<Either<Exception, Product?>> getProduct(String id);
+  Future<Either<ApiException, List<Product?>>> getProducts();
+  Future<Either<ApiException, Product?>> getProduct(String id);
 }

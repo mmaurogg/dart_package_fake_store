@@ -49,6 +49,48 @@ class ApiSource {
     }
   }
 
+  Future<Either<ApiException, T?>> putApi<T>(String url, T data) async {
+    try {
+      final response = await _client!.put(url, data: data);
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final jsonResponse = response.data;
+        //print(jsonResponse);
+        return Right(jsonResponse);
+      } else {
+        //print('Request failed with status: ${response.statusCode}.');
+        return Left(
+          ServerException(
+            'Request failed with status: ${response.statusCode} ',
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(_handleDioException(e));
+    }
+  }
+
+  Future<Either<ApiException, T?>> deleteApi<T>(String url, [T? data]) async {
+    try {
+      final response = await _client!.delete(url, data: data);
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final jsonResponse = response.data;
+        //print(jsonResponse);
+        return Right(jsonResponse);
+      } else {
+        //print('Request failed with status: ${response.statusCode}.');
+        return Left(
+          ServerException(
+            'Request failed with status: ${response.statusCode} ',
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(_handleDioException(e));
+    }
+  }
+
   ApiException _handleDioException(DioException e) {
     if (e.type == DioExceptionType.connectionTimeout ||
         e.type == DioExceptionType.sendTimeout ||

@@ -15,15 +15,13 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Product {
 
- int? get id; String? get title; double? get price; String? get description; String? get category; String? get image; Rating? get rating;
+ int? get id; set id(int? value); String? get title; set title(String? value); double? get price; set price(double? value); String? get description; set description(String? value); String? get category; set category(String? value); String? get image; set image(String? value); Rating? get rating; set rating(Rating? value);
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $ProductCopyWith<Product> get copyWith => _$ProductCopyWithImpl<Product>(this as Product, _$identity);
 
-  /// Serializes this Product to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -52,7 +50,7 @@ $Res call({
 });
 
 
-$RatingCopyWith<$Res>? get rating;
+
 
 }
 /// @nodoc
@@ -66,7 +64,7 @@ class _$ProductCopyWithImpl<$Res>
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? title = freezed,Object? price = freezed,Object? description = freezed,Object? category = freezed,Object? image = freezed,Object? rating = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(Product(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
@@ -77,19 +75,7 @@ as String?,rating: freezed == rating ? _self.rating : rating // ignore: cast_nul
 as Rating?,
   ));
 }
-/// Create a copy of Product
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$RatingCopyWith<$Res>? get rating {
-    if (_self.rating == null) {
-    return null;
-  }
 
-  return $RatingCopyWith<$Res>(_self.rating!, (value) {
-    return _then(_self.copyWith(rating: value));
-  });
-}
 }
 
 
@@ -107,11 +93,10 @@ extension ProductPatterns on Product {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Product value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Product() when $default != null:
-return $default(_that);case _:
+case _:
   return orElse();
 
 }
@@ -129,11 +114,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Product value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(){
 final _that = this;
 switch (_that) {
-case _Product():
-return $default(_that);case _:
+case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -150,11 +134,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Product value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(){
 final _that = this;
 switch (_that) {
-case _Product() when $default != null:
-return $default(_that);case _:
+case _:
   return null;
 
 }
@@ -171,10 +154,9 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? title,  double? price,  String? description,  String? category,  String? image,  Rating? rating)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Product() when $default != null:
-return $default(_that.id,_that.title,_that.price,_that.description,_that.category,_that.image,_that.rating);case _:
+case _:
   return orElse();
 
 }
@@ -192,10 +174,9 @@ return $default(_that.id,_that.title,_that.price,_that.description,_that.categor
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? title,  double? price,  String? description,  String? category,  String? image,  Rating? rating)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>() {final _that = this;
 switch (_that) {
-case _Product():
-return $default(_that.id,_that.title,_that.price,_that.description,_that.category,_that.image,_that.rating);case _:
+case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -212,10 +193,9 @@ return $default(_that.id,_that.title,_that.price,_that.description,_that.categor
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? title,  double? price,  String? description,  String? category,  String? image,  Rating? rating)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>() {final _that = this;
 switch (_that) {
-case _Product() when $default != null:
-return $default(_that.id,_that.title,_that.price,_that.description,_that.category,_that.image,_that.rating);case _:
+case _:
   return null;
 
 }
@@ -223,112 +203,17 @@ return $default(_that.id,_that.title,_that.price,_that.description,_that.categor
 
 }
 
-/// @nodoc
-@JsonSerializable()
-
-class _Product implements Product {
-  const _Product({this.id, this.title, this.price, this.description, this.category, this.image, this.rating});
-  factory _Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
-
-@override final  int? id;
-@override final  String? title;
-@override final  double? price;
-@override final  String? description;
-@override final  String? category;
-@override final  String? image;
-@override final  Rating? rating;
-
-/// Create a copy of Product
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$ProductCopyWith<_Product> get copyWith => __$ProductCopyWithImpl<_Product>(this, _$identity);
-
-@override
-Map<String, dynamic> toJson() {
-  return _$ProductToJson(this, );
-}
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Product&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.price, price) || other.price == price)&&(identical(other.description, description) || other.description == description)&&(identical(other.category, category) || other.category == category)&&(identical(other.image, image) || other.image == image)&&(identical(other.rating, rating) || other.rating == rating));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,id,title,price,description,category,image,rating);
-
-@override
-String toString() {
-  return 'Product(id: $id, title: $title, price: $price, description: $description, category: $category, image: $image, rating: $rating)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
-  factory _$ProductCopyWith(_Product value, $Res Function(_Product) _then) = __$ProductCopyWithImpl;
-@override @useResult
-$Res call({
- int? id, String? title, double? price, String? description, String? category, String? image, Rating? rating
-});
-
-
-@override $RatingCopyWith<$Res>? get rating;
-
-}
-/// @nodoc
-class __$ProductCopyWithImpl<$Res>
-    implements _$ProductCopyWith<$Res> {
-  __$ProductCopyWithImpl(this._self, this._then);
-
-  final _Product _self;
-  final $Res Function(_Product) _then;
-
-/// Create a copy of Product
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? title = freezed,Object? price = freezed,Object? description = freezed,Object? category = freezed,Object? image = freezed,Object? rating = freezed,}) {
-  return _then(_Product(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
-as double?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String?,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
-as String?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
-as String?,rating: freezed == rating ? _self.rating : rating // ignore: cast_nullable_to_non_nullable
-as Rating?,
-  ));
-}
-
-/// Create a copy of Product
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$RatingCopyWith<$Res>? get rating {
-    if (_self.rating == null) {
-    return null;
-  }
-
-  return $RatingCopyWith<$Res>(_self.rating!, (value) {
-    return _then(_self.copyWith(rating: value));
-  });
-}
-}
-
 
 /// @nodoc
 mixin _$Rating {
 
- double? get rate; int? get count;
+ double? get rate; set rate(double? value); int? get count; set count(int? value);
 /// Create a copy of Rating
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $RatingCopyWith<Rating> get copyWith => _$RatingCopyWithImpl<Rating>(this as Rating, _$identity);
 
-  /// Serializes this Rating to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -371,7 +256,7 @@ class _$RatingCopyWithImpl<$Res>
 /// Create a copy of Rating
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? rate = freezed,Object? count = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(Rating(
 rate: freezed == rate ? _self.rate : rate // ignore: cast_nullable_to_non_nullable
 as double?,count: freezed == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
 as int?,
@@ -395,11 +280,10 @@ extension RatingPatterns on Rating {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Rating value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Rating() when $default != null:
-return $default(_that);case _:
+case _:
   return orElse();
 
 }
@@ -417,11 +301,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Rating value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(){
 final _that = this;
 switch (_that) {
-case _Rating():
-return $default(_that);case _:
+case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -438,11 +321,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Rating value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(){
 final _that = this;
 switch (_that) {
-case _Rating() when $default != null:
-return $default(_that);case _:
+case _:
   return null;
 
 }
@@ -459,10 +341,9 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double? rate,  int? count)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Rating() when $default != null:
-return $default(_that.rate,_that.count);case _:
+case _:
   return orElse();
 
 }
@@ -480,10 +361,9 @@ return $default(_that.rate,_that.count);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double? rate,  int? count)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>() {final _that = this;
 switch (_that) {
-case _Rating():
-return $default(_that.rate,_that.count);case _:
+case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -500,85 +380,13 @@ return $default(_that.rate,_that.count);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double? rate,  int? count)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>() {final _that = this;
 switch (_that) {
-case _Rating() when $default != null:
-return $default(_that.rate,_that.count);case _:
+case _:
   return null;
 
 }
 }
-
-}
-
-/// @nodoc
-@JsonSerializable()
-
-class _Rating implements Rating {
-  const _Rating({this.rate, this.count});
-  factory _Rating.fromJson(Map<String, dynamic> json) => _$RatingFromJson(json);
-
-@override final  double? rate;
-@override final  int? count;
-
-/// Create a copy of Rating
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$RatingCopyWith<_Rating> get copyWith => __$RatingCopyWithImpl<_Rating>(this, _$identity);
-
-@override
-Map<String, dynamic> toJson() {
-  return _$RatingToJson(this, );
-}
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Rating&&(identical(other.rate, rate) || other.rate == rate)&&(identical(other.count, count) || other.count == count));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,rate,count);
-
-@override
-String toString() {
-  return 'Rating(rate: $rate, count: $count)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$RatingCopyWith<$Res> implements $RatingCopyWith<$Res> {
-  factory _$RatingCopyWith(_Rating value, $Res Function(_Rating) _then) = __$RatingCopyWithImpl;
-@override @useResult
-$Res call({
- double? rate, int? count
-});
-
-
-
-
-}
-/// @nodoc
-class __$RatingCopyWithImpl<$Res>
-    implements _$RatingCopyWith<$Res> {
-  __$RatingCopyWithImpl(this._self, this._then);
-
-  final _Rating _self;
-  final $Res Function(_Rating) _then;
-
-/// Create a copy of Rating
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? rate = freezed,Object? count = freezed,}) {
-  return _then(_Rating(
-rate: freezed == rate ? _self.rate : rate // ignore: cast_nullable_to_non_nullable
-as double?,count: freezed == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
-as int?,
-  ));
-}
-
 
 }
 
