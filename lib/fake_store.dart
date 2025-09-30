@@ -1,5 +1,9 @@
 library fake_store;
 
+export 'src/models/cart.dart';
+export 'src/models/product.dart';
+export 'src/models/user.dart';
+
 import 'package:dio/dio.dart';
 import 'package:fake_store/src/api/auth_api_source.dart';
 import 'package:fake_store/src/api/cart_api_source.dart';

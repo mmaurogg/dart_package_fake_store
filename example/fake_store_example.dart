@@ -1,6 +1,4 @@
 import 'package:fake_store/fake_store.dart';
-import 'package:fake_store/src/models/cart.dart';
-import 'package:fake_store/src/models/user.dart';
 
 Future<void> main() async {
   final store = FakeStore();
