@@ -5,7 +5,7 @@ import 'package:fake_store/src/exceptions/api_exceptions.dart';
 import 'package:fake_store/src/repository/auth_repository.dart';
 
 class AuthApiSource extends ApiSource implements AuthRepository {
-  AuthApiSource([super.client]);
+  AuthApiSource({required super.client});
 
   final String _baseUrl = Constants.baseUrl;
   final String _endpoint = 'auth/login';

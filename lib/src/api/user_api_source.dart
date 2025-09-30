@@ -6,7 +6,7 @@ import 'package:fake_store/src/repository/user_repository.dart';
 import 'package:fake_store/utils/constants.dart';
 
 class UserApiSource extends ApiSource implements UserRepository {
-  UserApiSource([super.client]);
+  UserApiSource({super.client});
 
   final String _baseUrl = Constants.baseUrl;
   final String _endpoint = 'users';
@@ -17,9 +17,14 @@ class UserApiSource extends ApiSource implements UserRepository {
     final data = user.toJson();
 
     return await postApi<Map<String, dynamic>>(url, data).then((value) {
-      return value.fold((l) => Left(l), (r) {
-        return r != null ? Right(User.fromJson(r)) : Right(null);
-      });
+      return value.fold(
+        (l) {
+          return Left(l);
+        },
+        (r) {
+          return r != null ? Right(User.fromJson(r)) : Right(null);
+        },
+      );
     });
   }
 

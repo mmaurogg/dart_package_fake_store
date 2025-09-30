@@ -3,13 +3,13 @@ import 'package:dartz/dartz.dart';
 import 'package:fake_store/src/exceptions/api_exceptions.dart';
 
 class ApiSource {
-  final Dio? _client;
+  final Dio? client;
 
-  ApiSource(Dio? client) : _client = client ?? Dio();
+  ApiSource({required this.client});
 
   Future<Either<ApiException, T?>> getApi<T>(String url) async {
     try {
-      final response = await _client!.get(url);
+      final response = await client!.get(url);
 
       if (response.statusCode == 200) {
         final jsonResponse = response.data;
@@ -30,7 +30,7 @@ class ApiSource {
 
   Future<Either<ApiException, T?>> postApi<T>(String url, T data) async {
     try {
-      final response = await _client!.post(url, data: data);
+      final response = await client!.post(url, data: data);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final jsonResponse = response.data;
@@ -51,7 +51,7 @@ class ApiSource {
 
   Future<Either<ApiException, T?>> putApi<T>(String url, T data) async {
     try {
-      final response = await _client!.put(url, data: data);
+      final response = await client!.put(url, data: data);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final jsonResponse = response.data;
@@ -72,7 +72,7 @@ class ApiSource {
 
   Future<Either<ApiException, T?>> deleteApi<T>(String url, [T? data]) async {
     try {
-      final response = await _client!.delete(url, data: data);
+      final response = await client!.delete(url, data: data);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final jsonResponse = response.data;
@@ -90,6 +90,8 @@ class ApiSource {
       return Left(_handleDioException(e));
     }
   }
+
+  _responseHandler() {}
 
   ApiException _handleDioException(DioException e) {
     if (e.type == DioExceptionType.connectionTimeout ||

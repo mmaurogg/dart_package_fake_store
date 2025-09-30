@@ -6,7 +6,7 @@ import 'package:fake_store/src/repository/product_repository.dart';
 import 'package:fake_store/src/models/product.dart';
 
 class ProductApiSource extends ApiSource implements ProductRepository {
-  ProductApiSource([super.client]);
+  ProductApiSource({super.client});
 
   final String _baseUrl = Constants.baseUrl;
   final String _endpoint = 'products';
