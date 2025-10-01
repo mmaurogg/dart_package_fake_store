@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$User {
 
- int? get id; set id(int? value); String? get userName; set userName(String? value); String? get email; set email(String? value); String? get password; set password(String? value);
+ int? get id; set id(int? value); String? get username; set username(String? value); String? get email; set email(String? value); String? get password; set password(String? value);
 /// Create a copy of User
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $UserCopyWith<User> get copyWith => _$UserCopyWithImpl<User>(this as User, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is User&&(identical(other.id, id) || other.id == id)&&(identical(other.userName, userName) || other.userName == userName)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is User&&(identical(other.id, id) || other.id == id)&&(identical(other.username, username) || other.username == username)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,userName,email,password);
+int get hashCode => Object.hash(runtimeType,id,username,email,password);
 
 @override
 String toString() {
-  return 'User(id: $id, userName: $userName, email: $email, password: $password)';
+  return 'User(id: $id, username: $username, email: $email, password: $password)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $UserCopyWith<$Res>  {
   factory $UserCopyWith(User value, $Res Function(User) _then) = _$UserCopyWithImpl;
 @useResult
 $Res call({
- int? id, String? userName, String? email, String? password
+ int? id, String? username, String? email, String? password
 });
 
 
@@ -63,10 +63,10 @@ class _$UserCopyWithImpl<$Res>
 
 /// Create a copy of User
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? userName = freezed,Object? email = freezed,Object? password = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? username = freezed,Object? email = freezed,Object? password = freezed,}) {
   return _then(User(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,userName: freezed == userName ? _self.userName : userName // ignore: cast_nullable_to_non_nullable
+as int?,username: freezed == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
 as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String?,password: freezed == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as String?,
