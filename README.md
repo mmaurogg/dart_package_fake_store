@@ -17,7 +17,7 @@ Un paquete de Dart que proporciona una envoltura simple y tipada para la popular
 - **[Freezed](https://pub.dev/packages/freezed):** Creación de clases inmutables.  
 - **[json_serializable](https://pub.dev/packages/json_serializable):** Genera to/from JSON de clases.  
 - **[Dio](https://pub.dev/packages/dio):** Manejo de las peticiones HTTP.  
-- **[Fake Store API](https://fakestoreapi.com/):** Api encargada de 
+- **[Fake Store API](https://fakestoreapi.com/):** Api encargada de datos.
 
 ## Primeros Pasos
 
