@@ -43,6 +43,14 @@ import 'package:fake_store_package/fake_store.dart';
 final fakeStore = FakeStore.instance;
 ```
 
+Luego, en la instancia busca el repositorio (`product`, `cart`, `user` y `auth`) y el metodo que te proveera los datos.
+
+```dart
+import 'package:fake_store_package/fake_store.dart';
+
+final fakeStore = FakeStore.instance;
+```
+
 Todas las llamadas a la API devuelven un `Either<ApiException, T>`, donde `Left` contiene un error y `Right` contiene la respuesta exitosa.
 
 **Ejemplo para obtener todos los productos:**
